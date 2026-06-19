@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MGLSI News</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <h1>MGLSI <span>News</span></h1>
+      <nav>
+        <button id="navHome" class="nav-link active">Accueil</button>
+        <button id="navNew" class="nav-link">Nouvel article</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Filtre par catégorie -->
+    <section id="filterBar" class="filter-bar">
+      <button class="filter-chip active" data-cat="all">Toutes</button>
+      <!-- chips catégories injectées en JS -->
+    </section>
+
+    <!-- Liste des articles -->
+    <section id="viewHome">
+      <div id="articleList" class="article-grid">
+        <p class="loading">Chargement des articles...</p>
+      </div>
+    </section>
+
+    <!-- Formulaire nouvel article -->
+    <section id="viewNew" class="hidden">
+      <div class="form-card">
+        <h2>Créer un article</h2>
+        <form id="articleForm">
+          <label for="titre">Titre</label>
+          <input type="text" id="titre" name="titre" required maxlength="255" placeholder="Titre de l'article">
+
+          <label for="categorie">Catégorie</label>
+          <select id="categorie" name="categorie" required>
+            <option value="" disabled selected>Choisir une catégorie</option>
+          </select>
+
+          <label for="contenu">Contenu</label>
+          <textarea id="contenu" name="contenu" rows="8" required placeholder="Écrivez le contenu de l'article..."></textarea>
+
+          <div class="form-actions">
+            <button type="button" id="cancelBtn" class="btn-secondary">Annuler</button>
+            <button type="submit" class="btn-primary">Publier l'article</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal détail article -->
+  <div id="articleModal" class="modal-overlay hidden">
+    <div class="modal">
+      <button id="closeModal" class="modal-close">&times;</button>
+      <span id="modalCategorie" class="badge"></span>
+      <h2 id="modalTitre"></h2>
+      <p id="modalDate" class="modal-date"></p>
+      <p id="modalContenu" class="modal-content-text"></p>
+      <button id="deleteArticleBtn" class="btn-danger">Supprimer cet article</button>
+    </div>
+  </div>
+
+  <!-- Toast notifications -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
